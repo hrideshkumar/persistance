@@ -33,6 +33,7 @@
        
        <!-- table configuration Annotation base -->
        <mapping class="com.AnotationBook"/>
+       <mapping class="com.Author"/>
  
    </session-factory>
  

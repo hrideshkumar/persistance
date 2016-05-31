@@ -1,12 +1,16 @@
 package com;
 
+import java.util.*;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+
 
 @Entity
 @Table(name = "BOOKS")
@@ -15,42 +19,58 @@ public class AnotationBook {
 	@Id
 	private String isbn;
 	private String title;
-	private String author;
-
-	@Temporal(TemporalType.DATE)
-	 private Date published;
 	
+
+	@ManyToMany
+	private final List<Author> authors = new ArrayList<Author>();
+	
+	@Temporal(TemporalType.DATE)
+	private Date published;
+
 	AnotationBook() {
 	}
 
-	public AnotationBook(String isbn, String title, String author) {
+	public AnotationBook(String isbn, String title, Date published) {
+		super();
 		this.isbn = isbn;
 		this.title = title;
-		this.author = author;
+		this.published = published;
 	}
 
 	public String getIsbn() {
-		return this.isbn;
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	public String getAuthor() {
-		return this.author;
+	public Date getPublished() {
+		return published;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setPublished(Date published) {
+		this.published = published;
 	}
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public List<Author> getAuthors() {
+		return authors;
 	}
+
+	@Override
+	public String toString() {
+		return "AnotationBook [isbn=" + isbn + ", title=" + title + ", authors=" + authors + ", published=" + published
+				+ "]";
+	}
+
+	
 
 }
