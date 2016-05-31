@@ -26,8 +26,13 @@
  
        <!-- Drop and re-create the database schema on startup -->
        <property name="hbm2ddl.auto">create</property>
- 
+ 	
+ 		 <!-- table configuration XML base 
        <mapping resource="Book.hbm.xml"/>
+      -->
+       
+       <!-- table configuration Annotation base -->
+       <mapping class="com.AnotationBook"/>
  
    </session-factory>
  

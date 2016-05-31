@@ -23,14 +23,14 @@ public class App
          final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
          final SessionFactory factory = configuration.buildSessionFactory(builder.build());
          final Session session = factory.openSession();
-         final Book book = new Book("93939398948 ", "Java 8", "Author");
+         final AnotationBook book = new AnotationBook("93939398948 ", "Java 8", "Author");
          session.beginTransaction();
          session.save(book);
          session.getTransaction().commit();
-         final List<Book> books = session.createCriteria(Book.class).list();
+         final List<AnotationBook> books = session.createCriteria(Book.class).list();
          System.out.println("\n----\n");
          System.out.println(MessageFormat.format("Storing {0} books in the database", books.size()));
-         for (final Book b : books) {
+         for (final AnotationBook b : books) {
              System.out.println(b);
          }
          System.out.println("\n----\n");
