@@ -18,23 +18,39 @@
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-		<!-- Disable the second-level cache -->
+		
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<!-- Disable the second-level cache 
 		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+		-->
 
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup <property name="hbm2ddl.auto">create</property> -->
+		<property name="hbm2ddl.auto">create</property>
 		<!-- table configuration XML base <mapping resource="Book.hbm.xml"/> -->
+		
+		
 
 		<!-- table configuration Annotation base -->
-		<mapping class="com.model.AnotationBook" />
+		<!-- <mapping class="com.model.AnotationBook" />
 		<mapping class="com.model.Author" />
 		<mapping class="com.model.EmployeeDetail" />
 		<mapping class="com.model.Employee" />
 		<mapping class="com.model.Cart" />
 		<mapping class="com.model.Items" />
-
+		<mapping class="com.model.Student" />
+		<mapping class="com.model.Account" />
+		<mapping class="com.manytoone.unidirectonal.Address"/>
+		<mapping class="com.manytoone.unidirectonal.Student"/>
+		<mapping class="com.manytoone.unidirectonal1.Student1"/>
+		<mapping class="com.manytoone.unidirectonal1.University"/> 
+		<mapping class="com.manytomany.Category"/>
+		<mapping class="com.manytomany.Stock"/> -->
+		<mapping class="com.manytoone.unidirectonal1.Dog"/>
+		<mapping class="com.manytoone.unidirectonal1.Customer"/>
+		
 	</session-factory>
 
 </hibernate-configuration>

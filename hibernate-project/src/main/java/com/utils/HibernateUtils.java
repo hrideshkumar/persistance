@@ -11,6 +11,8 @@ public class HibernateUtils {
 	
 	private static Session buildSessionFactory() {
 		final Configuration configuration = new Configuration().configure();
+		//configuration.setProperty("hibernate.cache.region.factory_class",
+         //       "org.hibernate.cache.spi.RegionFactory");
 		final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties());
 		final SessionFactory factory = configuration.buildSessionFactory(builder.build());

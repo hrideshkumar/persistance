@@ -1,19 +1,26 @@
 package com.model;
 
+import java.util.Iterator;
 import java.util.Set;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Entity;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 
 
 @Entity
 @Table(name="CART")
+@Cacheable(true)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE )
 public class Cart {
 	
 	@Id
@@ -64,9 +71,24 @@ public class Cart {
 	public void setItems(Set<Items> items) {
 		this.items = items;
 	}
-	@Override
+	public String print(){
+		String setItemd = setToString(items);
+		return this.id +" "+" "+setItemd;
+	}
+	private String setToString(Set<Items> items2){
+		String result = null;
+		Iterator iterator = items2.iterator(); 
+	      
+		   // check values
+		   while (iterator.hasNext()){
+			   result = result+"Value: "+iterator.next() + " ";  
+		   }
+		
+		return result;
+	}
+	/*@Override
 	public String toString() {
 		return "Cart [id=" + id + ", total=" + total + ", name=" + name + ", items=" + items + "]";
-	}
+	}*/
 
 }

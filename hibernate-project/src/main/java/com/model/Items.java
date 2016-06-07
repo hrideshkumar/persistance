@@ -71,6 +71,9 @@ public class Items {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+	public String print(){
+		return this.id +" "+" "+cart.getId();
+	}
 	@Override
 	public String toString() {
 		return "Items [id=" + id + ", itemId=" + itemId + ", itemTotal=" + itemTotal + ", quantity=" + quantity
